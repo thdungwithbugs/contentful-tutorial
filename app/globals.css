@@ -2,4 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+[id] {
+  scroll-margin-top: calc(70px + 1rem);
+}
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* scrollbar-gutter: stable; */
+}
+
+* {
+  @apply scroll-smooth;
+  /* scrollbar-gutter: stable; */
+}
+
+@layer base {
+  html {
+    @apply text-black;
+  }
+
+  h1 {
+    @apply text-5xl md:text-7xl font-semi-bold leading-normal;
+  }
+  h2 {
+    @apply text-4xl md:text-6xl font-bold leading-normal;
+  }
+  h3 {
+    @apply text-3xl md:text-5xl font-semibold leading-normal;
+  }
+  h4,
+  h4 * {
+    @apply text-2xl md:text-4xl font-medium leading-normal;
+  }
+  h5 {
+    @apply text-xl md:text-3xl font-normal leading-normal;
+  }
+  span {
+    @apply text-sm md:text-lg text-dark font-normal leading-normal;
+  }
+}
+
+input[type="range"],
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  background: #fff;
+  border-radius: 50%;
+  border: 3px solid #2b71a2;
+  margin-top: -7px;
+}
+input[type="range"]::-moz-range-progress {
+  background-color: #00538d;
+  border-radius: 5px;
+}
+input[type="range"]::-moz-range-track {
+  background-color: #d2e6f3;
+  border-radius: 5px;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 3px;
+  background: linear-gradient(to right, #00538d, #00538d), #d2e6f3;
+  background-size: var(--background-size, 0%) 100%;
+  background-repeat: no-repeat;
+  border-radius: 99px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
