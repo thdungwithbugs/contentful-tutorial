@@ -6,7 +6,6 @@ const nextConfig = {
       "react-hook-form",
       "clsx",
       "framer-motion",
-      "contentful",
       "typewriter-effect",
       "file-saver",
       "xlsx",

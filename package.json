@@ -12,7 +12,6 @@
     "@contentful/rich-text-react-renderer": "^15.19.0",
     "@tailwindcss/typography": "^0.5.10",
     "clsx": "^2.1.0",
-    "contentful": "^10.6.22",
     "file-saver": "^2.0.5",
     "framer-motion": "^11.0.6",
     "next": "14.0.4",
