@@ -6,7 +6,7 @@ const MonthlyPaymentCard = ({ item }: { item: IMonthlyPaymentSchedule }) => {
   return (
     <div
       key={item.month}
-      className="result-item gap-8 p-4 bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-md grid grid-cols-5 grid-rows-2"
+      className="result-item gap-8 p-4 bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] hover:shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] rounded-md grid grid-cols-5 grid-rows-2"
     >
       <div className="col-start-1 col-end-2 row-start-1 row-end-3">
         <div className="text-primary font-semibold pr-2 text-sm md:text-md">
