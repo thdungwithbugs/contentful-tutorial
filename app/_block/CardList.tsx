@@ -5,15 +5,20 @@ import InfoCard from "../_components/ui/InfoCard";
 import Container from "../_components/ui/Container";
 import { useContentfulData } from "@/context/ContentfulData";
 
+const cardIconUrlDefault =
+  "https://images.ctfassets.net/icj97c2sdn9i/5tZvSx4M2npiXgoxo4C9Ts/59289c14c8ce003ab5ab01745a54c7ee/Contact_Card.webp";
+
 const CardList = () => {
   const { initContentfulData } = useContentfulData();
 
   // FAKE DATA LIST CARD TỪ 1 DATA CONTENTFUL
   // EM CHƯA BIẾT CÁCH TẠO 1 MẢNG DATA TRÊN CONTENTFULL
   const cardArr = new Array(6).fill(null).map((_, index) => ({
-    url: initContentfulData?.cardInfoIcon?.url,
-    name: `${initContentfulData?.cardInfoTitle} ${index}`,
-    desc: `${initContentfulData?.cardInfoDesc} ${index}`,
+    url: initContentfulData?.cardInfoIcon?.url ?? cardIconUrlDefault,
+    name: `${initContentfulData?.cardInfoTitle ?? "Dũng title"} ${index}`,
+    desc: `${
+      initContentfulData?.cardInfoDesc ?? "Đây là mô tả của Dũng Card"
+    } ${index}`,
   }));
 
   return (
