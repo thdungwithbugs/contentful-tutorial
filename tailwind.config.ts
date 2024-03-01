@@ -63,6 +63,56 @@ module.exports = {
         myShadow1: "4.1px -5px 0 0 rgba(17, 24, 39, 0.5)",
         myShadow2: "-4.1px -5px 0 0 rgba(17, 24, 39, 0.5)",
       },
+      keyframes: {
+        orbit: {
+          from: {
+            top: "50%",
+            left: "50%",
+            transform: "translateX(-50%) translateY(-50%) rotate(0)",
+          },
+          to: {
+            top: "50%",
+            left: "50%",
+            transform: "translateX(-50%) translateY(-50%) rotate(360deg)",
+          },
+        },
+        "anti-orbit2": {
+          from: {
+            left: "50%",
+            top: "100%",
+            transform: "translateX(-50%) translateY(-50%) rotate(360deg)",
+          },
+          to: {
+            left: "50%",
+            top: "100%",
+            transform: "translateX(-50%) translateY(-50%) rotate(0)",
+          },
+        },
+        "anti-orbit1": {
+          from: {
+            left: "50%",
+            top: "0",
+            transform: "translateX(-50%) translateY(-50%) rotate(360deg)",
+          },
+          to: {
+            left: "50%",
+            top: "0",
+            transform: "translateX(-50%) translateY(-50%) rotate(0)",
+          },
+        },
+        "anti-orbit3": {
+          from: {
+            left: "50%",
+            top: "0",
+            transform: "translateX(-50%) translateY(-50%) rotate(360deg)",
+          },
+          to: {
+            left: "50%",
+            top: "0",
+            transform: "translateX(-50%) translateY(-50%) rotate(0)",
+          },
+        },
+      },
     },
   },
   corePlugins: {},

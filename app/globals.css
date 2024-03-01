@@ -79,3 +79,41 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* ORBIT ANIMATE KEYFRAMES */
+/* @keyframes orbit {
+  from {
+    @apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0;
+  }
+
+  to {
+    @apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[360deg];
+  }
+}
+
+@keyframes anti-orbit1 {
+  from {
+    @apply left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rotate-[360deg];
+  }
+  to {
+    @apply left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rotate-0;
+  }
+}
+
+@keyframes anti-orbit2 {
+  from {
+    @apply left-1/2 top-full -translate-x-1/2 -translate-y-1/2 rotate-[360deg];
+  }
+  to {
+    @apply left-1/2 top-full -translate-x-1/2 -translate-y-1/2 rotate-0;
+  }
+}
+
+@keyframes anti-orbit3 {
+  from {
+    @apply left-[calc((100%*sqrt(2)-100%)/2/sqrt(2))] top-[calc((100%*sqrt(2)-100%)/2/sqrt(2))] -translate-x-1/2 -translate-y-1/2 rotate-[360deg];
+  }
+  to {
+    @apply left-[calc((100%*sqrt(2)-100%)/2/sqrt(2))] top-[calc((100%*sqrt(2)-100%)/2/sqrt(2))] -translate-x-1/2 -translate-y-1/2 rotate-0;
+  }
+} */

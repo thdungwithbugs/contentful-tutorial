@@ -7,6 +7,9 @@ const nextConfig = {
       "clsx",
       "framer-motion",
       "contentful",
+      "typewriter-effect",
+      "file-saver",
+      "xlsx",
     ],
   },
   images: {

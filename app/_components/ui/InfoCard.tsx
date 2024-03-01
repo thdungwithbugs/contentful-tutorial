@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const CardIcon = () => {
   return (
     <svg
@@ -33,14 +35,25 @@ const InfoCard = ({
   name,
   desc,
 }: {
-  icon?: JSX.Element;
+  icon?: string;
   name: string;
   desc: string;
 }) => {
   return (
     <div className="p-3 md:p-6 rounded shadow-[inset_-2px_8px_40px_#ABE1F2] hover:shadow-md transition-all group">
       <div className="flex flex-col gap-[10px] items-center justify-center">
-        {icon ?? <CardIcon />}
+        {icon ? (
+          <Image
+            height={100}
+            width={100}
+            alt="logo card"
+            quality={95}
+            src={icon}
+            className="object-contain h-16 w-16"
+          />
+        ) : (
+          <CardIcon />
+        )}
         <span className="md:text-2xl font-medium">{name}</span>
         <span className="md:text-xl leading-normal text-center">{desc}</span>
       </div>
