@@ -15,9 +15,9 @@ const CardList = () => {
   // EM CHƯA BIẾT CÁCH TẠO 1 MẢNG DATA TRÊN CONTENTFULL
   const cardArr = new Array(6).fill(null).map((_, index) => ({
     url: initContentfulData?.cardInfoIcon?.url ?? cardIconUrlDefault,
-    name: `${initContentfulData?.cardInfoTitle ?? "Dũng title"} ${index}`,
+    name: `${initContentfulData?.cardInfoTitle ?? "Default title"} ${index}`,
     desc: `${
-      initContentfulData?.cardInfoDesc ?? "Đây là mô tả của Dũng Card"
+      initContentfulData?.cardInfoDesc ?? "This is card description default"
     } ${index}`,
   }));
 
