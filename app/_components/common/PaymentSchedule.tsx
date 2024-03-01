@@ -79,9 +79,9 @@ const PaymentSchedule = ({
     <Container className="list-result my-10">
       <div className="table-heading mb-4">
         <div className="divtext">
-          <h5>Lịch trình thanh toán</h5>
+          <h5>Payment schedule detail</h5>
           <span className="desc text-sm text-primary italic">
-            Danh sách mang tính chất tính toán tham khảo
+            The list is for reference calculation
           </span>
         </div>
         <ExportToExcel
@@ -91,10 +91,10 @@ const PaymentSchedule = ({
           setLoading={setLoadingDownExcel}
           isLoading={loadingDownExcel}
         >
-          {loadingDownExcel ? "Đang tải..." : "Tải bản ghi Excel"}
+          {loadingDownExcel ? "Downloading..." : "Download excel record"}
         </ExportToExcel>
         <span className="text-red-600 text-xs">
-          *Yêu cầu trình đọc file Excel
+          *Requires Excel file reader
         </span>
       </div>
       <div className="flex flex-col gap-4">
@@ -109,7 +109,7 @@ const PaymentSchedule = ({
               className="text-md text-primary underline inline-block mt-3 cursor-pointer hover:italic"
               onClick={handleShowMore}
             >
-              Xem các tháng tiếp theo
+              Show more
             </span>
           ) : null}
           {defaultMaxAmountEleToShowMore < numMonthsToShow ? (
@@ -117,7 +117,7 @@ const PaymentSchedule = ({
               className="text-md text-primary underline inline-block mt-3 cursor-pointer hover:italic"
               onClick={handleShowLess}
             >
-              Thu gọn
+              Show less
             </span>
           ) : null}
         </div>

@@ -239,7 +239,7 @@ const CalcTool = () => {
           <div className="flex gap-4 mt-4">
             {typeof monthlyMortgagePayment === "number" && (
               <Button onClick={handleShowDetail} className="bg-white text-dark">
-                Xem lịch trình
+                Payment schedule
               </Button>
             )}
           </div>

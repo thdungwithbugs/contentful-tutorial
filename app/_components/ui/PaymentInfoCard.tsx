@@ -10,11 +10,11 @@ const MonthlyPaymentCard = ({ item }: { item: IMonthlyPaymentSchedule }) => {
     >
       <div className="col-start-1 col-end-2 row-start-1 row-end-3">
         <div className="text-primary font-semibold pr-2 text-sm md:text-md">
-          Tháng thứ {item.month}
+          Month index {item.month}
         </div>
       </div>
       <div className="flex flex-col justify-between gap-1 col-start-2 col-end-4">
-        <div className="text-xs">Tiền vay còn lại</div>
+        <div className="text-xs">The remaining loan</div>
         <div className="val">
           <span className="number text-primary">
             {formatMoneyNum(item.balance)}
@@ -23,7 +23,7 @@ const MonthlyPaymentCard = ({ item }: { item: IMonthlyPaymentSchedule }) => {
         </div>
       </div>
       <div className="flex flex-col gap-1 col-start-4 col-end-6 justify-between">
-        <div className="text-xs">Số tiền gốc phải trả hàng tháng</div>
+        <div className="text-xs">Monthly principal amount</div>
         <div className="val">
           <span className="number text-primary">
             {formatMoneyNum(item.payment)}
@@ -32,7 +32,7 @@ const MonthlyPaymentCard = ({ item }: { item: IMonthlyPaymentSchedule }) => {
         </div>
       </div>
       <div className="flex flex-col gap-1 col-start-2 col-end-4 justify-between">
-        <div className="text-xs">Số tiền lãi trả hàng tháng</div>
+        <div className="text-xs">Monthly interest payment amount</div>
         <div className="val">
           <span className="number text-primary">
             {formatMoneyNum(item.interestPayment)}
@@ -41,7 +41,7 @@ const MonthlyPaymentCard = ({ item }: { item: IMonthlyPaymentSchedule }) => {
         </div>
       </div>
       <div className="flex flex-col gap-1 col-start-4 col-end-6 justify-between">
-        <div className="text-xs">Tổng tiền trả hàng tháng</div>
+        <div className="text-xs">Total payment</div>
         <div className="val">
           <span className="number text-primary">
             {formatMoneyNum(item.totalPaymentCurrentMonth)}

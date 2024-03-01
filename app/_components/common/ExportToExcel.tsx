@@ -95,15 +95,15 @@ const ExportToExcel = ({
 
       if (rawCsvData && rawCsvData?.length > 0) {
         const convertData = rawCsvData.map((item) => ({
-          ["Tháng"]: `Thứ ${item.month}`,
-          ["Tiền vay còn lại"]: formatMoneyNum(item.balance),
-          ["Số tiền gốc phải trả hàng tháng"]: formatMoneyNum(item.payment),
-          ["Số tiền lãi trả hàng tháng"]: formatMoneyNum(item.interestPayment),
-          ["Tổng tiền trả hàng tháng"]: formatMoneyNum(
-            item.totalPaymentCurrentMonth
+          ["Month"]: `index ${item.month}`,
+          ["The remaining loan"]: formatMoneyNum(item.balance),
+          ["Monthly principal amount"]: formatMoneyNum(item.payment),
+          ["Monthly interest payment amount"]: formatMoneyNum(
+            item.interestPayment
           ),
+          ["Total payment"]: formatMoneyNum(item.totalPaymentCurrentMonth),
         }));
-        utils.sheet_add_aoa(ws, [["Lịch trình thanh toán tham khảo"]], {
+        utils.sheet_add_aoa(ws, [["Reference payment schedule"]], {
           origin: "B12",
         });
         utils.sheet_add_json(ws, convertData!, { origin: "A14" });
@@ -145,7 +145,11 @@ const ExportToExcel = ({
   };
 
   return (
-    <Button onClick={() => exportToCSV()} disabled={isLoading}>
+    <Button
+      onClick={() => exportToCSV()}
+      disabled={isLoading}
+      className="!max-w-fit"
+    >
       {children}
     </Button>
   );
