@@ -6,7 +6,7 @@ const MonthlyPaymentCard = ({ item }: { item: IMonthlyPaymentSchedule }) => {
   return (
     <div
       key={item.month}
-      className="result-item gap-8 p-4 bg-gray-300 rounded-md grid grid-cols-5 grid-rows-2"
+      className="result-item gap-8 p-4 bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-md grid grid-cols-5 grid-rows-2"
     >
       <div className="col-start-1 col-end-2 row-start-1 row-end-3">
         <div className="text-primary font-semibold pr-2 text-sm md:text-md">
