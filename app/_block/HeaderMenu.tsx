@@ -6,7 +6,7 @@ import Container from "../_components/ui/Container";
 
 const HeaderMenu = () => {
   return (
-    <header className="bg-white">
+    <header className="bg-white w-full fixed z-10">
       <Container>
         <nav
           className="flex items-center justify-between p-[calc((96px-57px)/2)] lg:px-8"

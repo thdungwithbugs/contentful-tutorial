@@ -66,7 +66,7 @@ const Hero = () => {
   };
 
   return (
-    <section>
+    <section className="hero-banner pt-16">
       <div className="w-auto h-[480px] md:h-[720px] object-contain items-end isolate relative">
         <Image
           priority={true}
