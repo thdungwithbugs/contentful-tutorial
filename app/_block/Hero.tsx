@@ -66,8 +66,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero-banner pt-16">
-      <div className="w-auto h-[480px] md:h-[720px] object-contain items-end isolate relative">
+    <section className="hero-banner">
+      <div className="w-auto h-[calc(480px_+_70px)] md:h-[calc(720px_+_70px)] object-contain items-end isolate relative">
         <Image
           priority={true}
           src={initContentfulData?.heroImg?.url ?? defaultBgUrl}
