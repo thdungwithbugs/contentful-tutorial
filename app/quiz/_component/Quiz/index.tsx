@@ -1,7 +1,6 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { ControllerRenderProps, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,12 +14,20 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { memo, useCallback, useState } from "react";
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 import Button from "@/app/_components/ui/Button";
 import ThanksModal from "@/app/_components/ui/ThanksModal";
 import Container from "@/app/_components/ui/Container";
+import { isNull } from "util";
 
 interface IMockQuestionData {
   id: number;
@@ -49,7 +56,7 @@ const CorrectIcon = () => {
         fillRule="evenodd"
         id="Page-1"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
       >
         <g fillRule="nonzero" id="correct">
           <path
@@ -75,7 +82,7 @@ function Quiz({ mockQuestionData }: { mockQuestionData: IMockQuestionData[] }) {
     "nothing"
   );
   const [resultModal, setResultModal] = useState<boolean>(false);
-
+  const [showHint, setShowHint] = useState(false);
   const curAnswer = mockQuestionData[curIndex];
 
   const FormSchema = z.object({
@@ -103,6 +110,7 @@ function Quiz({ mockQuestionData }: { mockQuestionData: IMockQuestionData[] }) {
   );
 
   const handleNextQuestion = useCallback(() => {
+    setShowHint(false);
     if (curIndex + 1 < mockQuestionData.length) {
       setCurIndex(curIndex + 1);
       setShowNextButton("nothing");
@@ -113,6 +121,59 @@ function Quiz({ mockQuestionData }: { mockQuestionData: IMockQuestionData[] }) {
       setShowNextButton("nothing");
     }
   }, [curIndex, form, mockQuestionData.length]);
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", handleBeforeUnload, {
+      capture: true,
+    });
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  // Im not sure that func will right in every broswer behavior cases
+  const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+    e.preventDefault();
+    const message =
+      "Are you sure you want to leave? All provided data will be lost.";
+    return (e.returnValue = "");
+  };
+
+  const handleCheckboxChange = useCallback(
+    (
+      field: ControllerRenderProps<
+        {
+          items: string[];
+        },
+        "items"
+      >,
+      item: {
+        id: string;
+        val: string;
+      }
+    ) => {
+      const currentValue = field.value || [];
+      const index = currentValue.indexOf(item.id);
+      if (index !== -1) {
+        currentValue.splice(index, 1);
+      } else {
+        if (curAnswer?.answerAmount === 1) {
+          currentValue.length = 0;
+        } else if (curAnswer?.answerAmount === 2) {
+          if (currentValue.length === curAnswer?.answerAmount) {
+            currentValue.shift();
+          }
+        } else {
+          if (currentValue.length === curAnswer?.answerAmount) {
+            currentValue.shift();
+          }
+        }
+        currentValue.push(item.id);
+      }
+      field.onChange(currentValue);
+    },
+    [curAnswer?.answerAmount]
+  );
 
   return (
     <div className="bg-black isolate relative">
@@ -161,18 +222,11 @@ function Quiz({ mockQuestionData }: { mockQuestionData: IMockQuestionData[] }) {
                                   disabled={showNextButton === true}
                                   checked={field.value?.includes(item.id)}
                                   onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field?.value
-                                        ? field.onChange([
-                                            ...field?.value,
-                                            item.id,
-                                          ])
-                                        : field.onChange([item.id])
-                                      : field.onChange(
-                                          field?.value?.filter(
-                                            (value) => value !== item.id
-                                          )
-                                        );
+                                    console.log(
+                                      "🚀 ~ Quiz ~ checked:",
+                                      checked
+                                    );
+                                    handleCheckboxChange(field, item);
                                   }}
                                 />
                               </FormControl>
@@ -189,7 +243,7 @@ function Quiz({ mockQuestionData }: { mockQuestionData: IMockQuestionData[] }) {
                 </FormItem>
               )}
             />
-            {showNextButton === true && (
+            {showHint && (
               <div className="text-white bg-[#8D3B72] text-xs font-semibold text-center rounded-md shadow-md p-3">
                 Hint : {curAnswer?.hint}
               </div>
@@ -211,17 +265,26 @@ function Quiz({ mockQuestionData }: { mockQuestionData: IMockQuestionData[] }) {
                 : null}
             </div>
 
-            {showNextButton === true ? (
-              curIndex + 1 < mockQuestionData.length && (
-                <Button onClick={handleNextQuestion} key={"btn_next"}>
-                  Next question
+            <div className="flex items-center gap-6">
+              {showNextButton === true ? (
+                curIndex + 1 < mockQuestionData.length && (
+                  <Button onClick={handleNextQuestion} key={"btn_next"}>
+                    Next question
+                  </Button>
+                )
+              ) : (
+                <Button htmlType={"submit"} key={"btn_submit"}>
+                  Submit answer
                 </Button>
-              )
-            ) : (
-              <Button htmlType={"submit"} key={"btn_submit"}>
-                Submit answer
-              </Button>
-            )}
+              )}
+              <span
+                onClick={() => setShowHint((prev) => !prev)}
+                key={"btn_show_hint"}
+                className="underline text-blue-600 cursor-pointer inline-block italic text-sm"
+              >
+                {showHint ? "Hide hint" : "Show hint"}
+              </span>
+            </div>
             {curIndex + 1 === mockQuestionData.length &&
               showNextButton === true && (
                 <>
