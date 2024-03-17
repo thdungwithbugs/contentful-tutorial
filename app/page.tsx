@@ -1,5 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
-import { AnimateInto, CalcTool, CardList, Hero, Intro } from "./_block";
+import { AnimateInto, Hero, Intro } from "./_block";
 
 type Props = {
   params: { id: string };
@@ -17,13 +17,12 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   return {
-    title: "Test Coding with contentful by HDung",
-    description: "This is a simple website connected with Contentful by HDung",
+    title: "Test Coding with Quiz by HDung",
+    description: "This is a simple website by HDung",
     openGraph: {
       ...openGraphImage,
-      title: "Contentful w Nextjs 14 by HDung",
-      description:
-        "This simple page was coded by HDung with NextJS 14 and Contentful CMS",
+      title: "Quiz w Nextjs 14 by HDung",
+      description: "This simple page was coded by HDung with NextJS 14",
       type: "website",
     },
   };
@@ -39,10 +38,6 @@ export default async function Home() {
         <Intro />
         <AnimateInto />
       </section>
-      {/* CARD LIST SECTION */}
-      <CardList />
-      {/* CALCULATOR TOOL SECTION */}
-      <CalcTool />
     </>
   );
 }

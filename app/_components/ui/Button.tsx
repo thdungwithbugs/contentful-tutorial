@@ -170,8 +170,8 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           onClick={handleClick}
           ref={buttonRef as React.Ref<HTMLAnchorElement>}
         >
-          <div className="absolute inset-0 w-0 bg-primary transition-all duration-[300ms] ease-out group-hover:w-full"></div>
-          <div className="relative group-hover:text-white flex items-center gap-2">
+          <div className="absolute inset-0 w-0 bg-blue-600 transition-all duration-[300ms] ease-out group-hover:w-full"></div>
+          <div className="relative group-hover:text-white flex items-center gap-2 text-black">
             {iconNode}
             {children}
             {!noIcon && iconRight}
@@ -190,8 +190,8 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
         disabled={disabled}
         ref={buttonRef as React.Ref<HTMLButtonElement>}
       >
-        <div className="absolute inset-0 w-0 bg-gray transition-all duration-[300ms] ease-out group-hover:w-full"></div>
-        <div className="relative group-hover:text-white flex items-center gap-2">
+        <div className="absolute inset-0 w-0 bg-blue-600 transition-all duration-[300ms] ease-out group-hover:w-full shadow-2xl"></div>
+        <div className="relative group-hover:text-white flex items-center gap-2 text-gray-700">
           {iconNode}
           {children}
           {!noIcon && iconRight && iconRight}

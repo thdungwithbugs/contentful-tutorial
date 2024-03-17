@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
+import { twMerge } from "tailwind-merge";
 
 type ThanksModalProps = {
   open?: boolean;
@@ -8,6 +9,7 @@ type ThanksModalProps = {
   failText?: JSX.Element;
   successText?: JSX.Element;
   overlayCls?: string;
+  modalCls?: string;
 };
 
 const ThanksModal = ({
@@ -15,6 +17,7 @@ const ThanksModal = ({
   onClose,
   type,
   overlayCls,
+  modalCls,
   failText = (
     <h3 className="mb-4 max-w-xs text-center">
       Gửi không thành công. Vui lòng thử lại sau.
@@ -56,7 +59,10 @@ const ThanksModal = ({
               exit={{ opacity: 0, transition: { duration: 0.5 } }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="mx-4 flex w-full max-w-[600px] flex-col items-center justify-center rounded-2xl bg-white p-8"
+              className={twMerge(
+                "mx-4 flex w-full max-w-[600px] flex-col items-center justify-center rounded-2xl bg-white p-8 gap-2",
+                modalCls
+              )}
               onClick={(e) => {
                 e.stopPropagation();
               }}

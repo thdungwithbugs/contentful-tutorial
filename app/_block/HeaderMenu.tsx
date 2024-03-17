@@ -7,11 +7,16 @@ import Image from "next/image";
 import Container from "../_components/ui/Container";
 import { mergeClsx } from "@/helpers";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { usePathname } from "next/navigation";
 
 const HeaderMenu = () => {
   const [isTransparent, setIsTransparent] = useState(true);
 
   const bufferRef = useRef<null | HTMLDivElement>(null);
+
+  const pathname = usePathname();
+
+  console.log("🚀 ~ HeaderMenu ~ pathname:", pathname);
 
   useIntersectionObserver({
     callback: (entries: IntersectionObserverEntry[]) => {
@@ -40,7 +45,7 @@ const HeaderMenu = () => {
       >
         <Container>
           <nav
-            className="flex items-center justify-between py-[calc((96px-57px)/2)] "
+            className="flex items-center justify-between py-2"
             aria-label="Global"
           >
             <div className="flex">
@@ -50,19 +55,28 @@ const HeaderMenu = () => {
                   width={125}
                   alt="logo"
                   src="/images/logo.jpg"
-                  className="object-contain"
+                  className="object-contain h-[70px] w-auto"
                 />
               </Link>
             </div>
             <div className="flex gap-3 md:gap-6 flex-1 justify-end items-center font-medium">
-              <span className="hidden sm:inline-block text-md xl:text-lg">
-                Ready to changing?
-              </span>
-              <Button className="px-4 py-2 md:px-[34px] md:py-4 rounded-md md:rounded-full border border-primary text-primary shadow-md group relative overflow-hidden transition-all bg-white">
-                <span className="group-hover:text-white relative text-md xl:text-lg">
-                  Insta Benefit
-                </span>
-              </Button>
+              {pathname === "/quiz" ? (
+                <span>Being the quiz, good luck !</span>
+              ) : (
+                <>
+                  <span className="hidden sm:inline-block text-md xl:text-lg">
+                    Ready to play?
+                  </span>
+                  <Button
+                    className="px-4 py-2 md:px-[34px] md:py-4 rounded-md md:rounded-full border border-primary text-primary shadow-md group relative overflow-hidden transition-all bg-white"
+                    href="/quiz"
+                  >
+                    <span className="group-hover:text-white relative text-md xl:text-lg">
+                      Quiz now
+                    </span>
+                  </Button>
+                </>
+              )}
             </div>
           </nav>
         </Container>

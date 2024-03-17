@@ -13,14 +13,14 @@ const defaultComments = [
       "px-6 py-4 bg-white text-primary rounded-t-full rounded-bl-full shadow-[0_3px_10px_rgb(0,0,0,0.2)] absolute top-2 left-0",
     key: "divAnimate0",
     content:
-      "Easy way for users to create and share their business cards on the digital platform",
+      "Easy way to develop intelligence and increase reflexes on the digital platform",
   },
   {
     className:
       "px-6 py-4 bg-white text-primary rounded-tr-full rounded-b-full shadow-[0_3px_10px_rgb(0,0,0,0.2)] absolute bottom-0 md:bottom-20 right-0",
     key: "divAnimate1",
     content:
-      "Allow users to share links to social media channels like: FB, Insta,...",
+      "Allow users to share results to social media channels like: FB, Insta,...",
   },
 ];
 
@@ -43,14 +43,14 @@ const AnimateInto = () => {
     // };
   }, [controls, hasEnteredView]);
   return (
-    <Container className="flex items-center justify-center relative py-24 md:py-20 md:mt-24">
+    <Container className="flex items-center justify-center relative py-24 md:py-20 md:mt-24 mb-20">
       <Image
-        height={723}
-        width={168}
+        height={500}
+        width={500}
         quality={90}
         alt="app down"
-        src={"/images/iPhone13pro.png"}
-        className="object-contain h-[400px] md:h-[600px] w-auto py-10 md:py-4"
+        src={"/images/quiz.png"}
+        className="object-contain h-[200px] md:h-[300px] aspect-square py-10 md:py-4"
       />
       <AnimateCircle />
       <AnimatePresence>
